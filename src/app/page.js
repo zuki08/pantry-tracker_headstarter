@@ -27,7 +27,7 @@ export default function Home() {
     getDocs(collection(db, "items"))
       .then((qss) => {
         qss.forEach((e) => {
-          if(searchP !== "" && e.data().name.includes(searchP)){
+          if(searchP !== "" && (e.data().name.includes(searchP) || searchP.includes(e.data().name))){
             arr.push({ id: e.id, data: e.data() });
           } else if(searchP == "") {
             arr.push({ id: e.id, data: e.data() });
